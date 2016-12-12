@@ -1,6 +1,9 @@
 # Visual Studio
 /.vs/
 *.suo
+*.user
 *.ide/
 [Oo]bj/
 [Bb]in/
+
+packages/

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
-using Asana.Resources;
+﻿using System.Net.Http;
 
 namespace Asana.Requests
 {
@@ -9,66 +7,93 @@ namespace Asana.Requests
     /// A single HTTP request can be initiated using the "Execute" or "ExecuteRaw" methods, or for collections methods
     /// the CollectionRequest subclass can be used as an IEnumerable.
     /// </summary>
-    public abstract class Request<T>
+    public abstract class Request
     {
+        private readonly Client client;
+        public readonly HttpMethod Method;
         public readonly string Path;
-        public readonly string Method;
 
-        protected readonly Client Client;
-
-        public HttpContent Content { get; private set; }
-
-        public IDictionary<string, object> Data { get; private set; }
-        public IDictionary<string, object> Query { get; private set; }
-        public IDictionary<string, object> Options { get; }
+        public readonly HttpRequestMessage Message;
         
-        protected Request(Resource resource, string path, string method)
+        protected Request(Client client, string path, string method)
         {
-            this.Client = resource.Client;
-
+            this.client = client;
             this.Path = path;
-            this.Method = method;
-            this.Content = null;
+            this.Method = ParseHttpMethod(method);
+            this.Message = new HttpRequestMessage(method, path);
+        }	
 
-            this.Data = new Dictionary<string, object>();
-            this.Query = new Dictionary<string, object>();
-            this.Options = new Dictionary<string, object>(this.Client.Options);
+        public static ItemRequest<T> Create<T>(Client client, string path, string method)
+        {
+            return new ItemRequest<T>(client, path, method);
         }
 
-        public Request<T> WithQuery(IDictionary<string, object> query)
+        public static CollectionRequest<T> CreateCollection<T>(Client client, string path, string method)
         {
-            this.Query = query;
-            return this;
+            return new CollectionRequest<T>(client, path, method);
         }
 
-        public Request<T> WithQuery(string key, object value)
+        public static EventsRequest<T> CreateEvents<T>(Client client, string path, string method)
         {
-            this.Query[key] = value;
-            return this;
+            return new EventsRequest<T>(client, path, method);
         }
 
-        public Request<T> WithData(HttpContent content)
+        protected HttpResponseMessage ExecuteRaw()
         {
-            this.Content = content;
-            return this;
+            return this.client.Execute(this);
         }
 
-        public Request<T> WithData(IDictionary<string, object> data)
+	private static HttpMethod ParseHttpMethod(string method)
+	{
+	   switch (method)
+	   {
+	      case "GET":
+	        return HttpMethod.Get;
+	      case "PUT":
+	        return HttpMethod.Put;
+	      case "POST":
+	        return HttpMethod.Post;
+	      case "DELETE":
+	        return HttpMethod.Delete;
+	      default:
+		throw new ArgumentException("method");
+	   }
+	}
+    }
+
+    public class ItemRequest<T> : Request
+    {
+        public ItemRequest(Client client, string path, HttpMethod method)
+           : base(client, path, method)
         {
-            this.Data = data;
-            return this;
         }
 
-        public Request<T> WithData(string key, object value)
+        public ItemRequest<T> WithParam(string key, object value)
         {
-            this.Data[key] = value;
-            return this;
+            throw new System.NotImplementedException();
         }
 
-        public Request<T> WithOption(string key, object value)
+        public T Execute()
         {
-            this.Options[key] = value;
-            return this;
+            var response = base.ExecuteRaw();
+
+            throw new System.NotImplementedException();
+        }
+    }
+
+    public class CollectionRequest<T> : Request
+    {
+        public CollectionRequest(Client client, string path, HttpMethod method)
+           : base(client, path, method)
+        {
+        }
+    }
+
+    public class EventsRequest<T> : Request
+    {
+        public EventsRequest(Client client, string path, HttpMethod method)
+           : base(client, path, method)
+        {
         }
     }
 }
