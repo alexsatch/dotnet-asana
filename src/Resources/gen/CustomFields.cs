@@ -1,8 +1,7 @@
 using Asana.Models;
 using Asana.Requests;
-using Asana.Resources;
 
-namespace Asana.Requests 
+namespace Asana.Resources 
 {
     /// <summary>
     ///     Custom Fields store the metadata that is used in order to add user-specified
@@ -26,7 +25,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<CustomField> FindById(string customField) 
         {
-            string path = string.Format("/custom_fields/%s", customField);
+            string path = string.Format("/custom_fields/{0}", customField);
             return new ItemRequest<CustomField>(this.Client, path, "GET");
         }    
 
@@ -39,7 +38,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<CustomField> FindByWorkspace(string workspace) 
         {
-            string path = string.Format("/workspaces/%s/custom_fields", workspace);
+            string path = string.Format("/workspaces/{0}/custom_fields", workspace);
             return new ItemRequest<CustomField>(this.Client, path, "GET");
         }
     }

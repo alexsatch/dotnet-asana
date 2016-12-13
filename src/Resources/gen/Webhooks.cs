@@ -1,8 +1,7 @@
 using Asana.Models;
 using Asana.Requests;
-using Asana.Resources;
 
-namespace Asana.Requests 
+namespace Asana.Resources 
 {
     /// <summary>
     ///     Webhooks allow an application to be notified of changes. This is in addition
@@ -98,7 +97,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Webhook> GetById(string webhook) 
         {
-            string path = string.Format("/webhooks/%s", webhook);
+            string path = string.Format("/webhooks/{0}", webhook);
             return new ItemRequest<Webhook>(this.Client, path, "GET");
         }    
 
@@ -113,7 +112,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Webhook> DeleteById(string webhook) 
         {
-            string path = string.Format("/webhooks/%s", webhook);
+            string path = string.Format("/webhooks/{0}", webhook);
             return new ItemRequest<Webhook>(this.Client, path, "DELETE");
         }
     }

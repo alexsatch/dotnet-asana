@@ -1,8 +1,7 @@
 using Asana.Models;
 using Asana.Requests;
-using Asana.Resources;
 
-namespace Asana.Requests 
+namespace Asana.Resources 
 {
     /// <summary>
     ///     Custom fields are attached to a particular project with the Custom
@@ -26,7 +25,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<CustomFieldSetting> FindByProject(string project) 
         {
-            string path = string.Format("/projects/%s/custom_field_settings", project);
+            string path = string.Format("/projects/{0}/custom_field_settings", project);
             return new ItemRequest<CustomFieldSetting>(this.Client, path, "GET");
         }
     }

@@ -1,8 +1,7 @@
 using Asana.Models;
 using Asana.Requests;
-using Asana.Resources;
 
-namespace Asana.Requests 
+namespace Asana.Resources 
 {
     /// <summary>
     ///     A _user_ object represents an account in Asana that can be given access to
@@ -38,7 +37,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<User> FindById(String user) 
         {
-            string path = string.Format("/users/%s", user);
+            string path = string.Format("/users/{0}", user);
             return new ItemRequest<User>(this.Client, path, "GET");
         }    
 
@@ -52,7 +51,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public CollectionRequest<User> FindByWorkspace(string workspace) 
         {
-            string path = string.Format("/workspaces/%s/users", workspace);
+            string path = string.Format("/workspaces/{0}/users", workspace);
             return new CollectionRequest<User>(this.Client, path, "GET");
         }    
 

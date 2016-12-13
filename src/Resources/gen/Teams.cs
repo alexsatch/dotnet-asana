@@ -1,8 +1,7 @@
 using Asana.Models;
 using Asana.Requests;
-using Asana.Resources;
 
-namespace Asana.Requests 
+namespace Asana.Resources 
 {
     /// <summary>
     ///     A _team_ is used to group related projects and people together within an
@@ -23,7 +22,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Team> FindById(string team) 
         {
-            string path = string.Format("/teams/%s", team);
+            string path = string.Format("/teams/{0}", team);
             return new ItemRequest<Team>(this.Client, path, "GET");
         }    
 
@@ -37,7 +36,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public CollectionRequest<Team> FindByOrganization(string organization) 
         {
-            string path = string.Format("/organizations/%s/teams", organization);
+            string path = string.Format("/organizations/{0}/teams", organization);
             return new CollectionRequest<Team>(this.Client, path, "GET");
         }    
 
@@ -52,7 +51,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public CollectionRequest<Team> FindByUser(String user) 
         {
-            string path = string.Format("/users/%s/teams", user);
+            string path = string.Format("/users/{0}/teams", user);
             return new CollectionRequest<Team>(this.Client, path, "GET");
         }    
 
@@ -65,7 +64,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public CollectionRequest<Team> Users(string team) 
         {
-            string path = string.Format("/teams/%s/users", team);
+            string path = string.Format("/teams/{0}/users", team);
             return new CollectionRequest<Team>(this.Client, path, "GET");
         }    
 
@@ -81,7 +80,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Team> AddUser(string team) 
         {
-            string path = string.Format("/teams/%s/addUser", team);
+            string path = string.Format("/teams/{0}/addUser", team);
             return new ItemRequest<Team>(this.Client, path, "POST");
         }    
 
@@ -95,7 +94,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Team> RemoveUser(string team) 
         {
-            string path = string.Format("/teams/%s/removeUser", team);
+            string path = string.Format("/teams/{0}/removeUser", team);
             return new ItemRequest<Team>(this.Client, path, "POST");
         }
     }

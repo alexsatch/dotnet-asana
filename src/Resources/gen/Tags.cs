@@ -1,8 +1,7 @@
 using Asana.Models;
 using Asana.Requests;
-using Asana.Resources;
 
-namespace Asana.Requests 
+namespace Asana.Resources 
 {
     /// <summary>
     ///     A _tag_ is a label that can be attached to any task in Asana. It exists in a
@@ -51,7 +50,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Tag> CreateInWorkspace(string workspace) 
         {
-            string path = string.Format("/workspaces/%s/tags", workspace);
+            string path = string.Format("/workspaces/{0}/tags", workspace);
             return new ItemRequest<Tag>(this.Client, path, "POST");
         }    
 
@@ -64,7 +63,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Tag> FindById(string tag) 
         {
-            string path = string.Format("/tags/%s", tag);
+            string path = string.Format("/tags/{0}", tag);
             return new ItemRequest<Tag>(this.Client, path, "GET");
         }    
 
@@ -84,7 +83,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Tag> Update(string tag) 
         {
-            string path = string.Format("/tags/%s", tag);
+            string path = string.Format("/tags/{0}", tag);
             return new ItemRequest<Tag>(this.Client, path, "PUT");
         }    
 
@@ -100,7 +99,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Tag> Delete(string tag) 
         {
-            string path = string.Format("/tags/%s", tag);
+            string path = string.Format("/tags/{0}", tag);
             return new ItemRequest<Tag>(this.Client, path, "DELETE");
         }    
 
@@ -123,7 +122,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public CollectionRequest<Tag> FindByWorkspace(string workspace) 
         {
-            string path = string.Format("/workspaces/%s/tags", workspace);
+            string path = string.Format("/workspaces/{0}/tags", workspace);
             return new CollectionRequest<Tag>(this.Client, path, "GET");
         }    
 
@@ -137,7 +136,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public CollectionRequest<Tag> GetTasksWithTag(string tag) 
         {
-            string path = string.Format("/tags/%s/tasks", tag);
+            string path = string.Format("/tags/{0}/tasks", tag);
             return new CollectionRequest<Tag>(this.Client, path, "GET");
         }
     }

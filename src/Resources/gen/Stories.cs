@@ -1,8 +1,7 @@
 using Asana.Models;
 using Asana.Requests;
-using Asana.Resources;
 
-namespace Asana.Requests 
+namespace Asana.Resources 
 {
     /// <summary>
     ///     A _story_ represents an activity associated with an object in the Asana
@@ -28,7 +27,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public CollectionRequest<Story> FindByTask(string task) 
         {
-            string path = string.Format("/tasks/%s/stories", task);
+            string path = string.Format("/tasks/{0}/stories", task);
             return new CollectionRequest<Story>(this.Client, path, "GET");
         }    
 
@@ -41,7 +40,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Story> FindById(string story) 
         {
-            string path = string.Format("/stories/%s", story);
+            string path = string.Format("/stories/{0}", story);
             return new ItemRequest<Story>(this.Client, path, "GET");
         }    
 
@@ -58,7 +57,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Story> CreateOnTask(string task) 
         {
-            string path = string.Format("/tasks/%s/stories", task);
+            string path = string.Format("/tasks/{0}/stories", task);
             return new ItemRequest<Story>(this.Client, path, "POST");
         }
     }

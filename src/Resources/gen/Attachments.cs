@@ -1,8 +1,7 @@
 using Asana.Models;
 using Asana.Requests;
-using Asana.Resources;
 
-namespace Asana.Requests 
+namespace Asana.Resources 
 {
     /// <summary>
     ///     An _attachment_ object represents any file attached to a task in Asana,
@@ -24,7 +23,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Attachment> FindById(string attachment) 
         {
-            string path = string.Format("/attachments/%s", attachment);
+            string path = string.Format("/attachments/{0}", attachment);
             return new ItemRequest<Attachment>(this.Client, path, "GET");
         }    
 
@@ -37,7 +36,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public CollectionRequest<Attachment> FindByTask(string task) 
         {
-            string path = string.Format("/tasks/%s/attachments", task);
+            string path = string.Format("/tasks/{0}/attachments", task);
             return new CollectionRequest<Attachment>(this.Client, path, "GET");
         }
     }

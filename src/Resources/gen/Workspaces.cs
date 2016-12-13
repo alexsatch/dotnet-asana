@@ -1,8 +1,7 @@
 using Asana.Models;
 using Asana.Requests;
-using Asana.Resources;
 
-namespace Asana.Requests 
+namespace Asana.Resources 
 {
     /// <summary>
     ///     A _workspace_ is the highest-level organizational unit in Asana. All projects
@@ -35,7 +34,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Workspace> FindById(string workspace) 
         {
-            string path = string.Format("/workspaces/%s", workspace);
+            string path = string.Format("/workspaces/{0}", workspace);
             return new ItemRequest<Workspace>(this.Client, path, "GET");
         }    
 
@@ -63,7 +62,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Workspace> Update(string workspace) 
         {
-            string path = string.Format("/workspaces/%s", workspace);
+            string path = string.Format("/workspaces/{0}", workspace);
             return new ItemRequest<Workspace>(this.Client, path, "PUT");
         }    
 
@@ -80,7 +79,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public CollectionRequest<Workspace> Typeahead(string workspace) 
         {
-            string path = string.Format("/workspaces/%s/typeahead", workspace);
+            string path = string.Format("/workspaces/{0}/typeahead", workspace);
             return new CollectionRequest<Workspace>(this.Client, path, "GET");
         }    
 
@@ -94,7 +93,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Workspace> AddUser(string workspace) 
         {
-            string path = string.Format("/workspaces/%s/addUser", workspace);
+            string path = string.Format("/workspaces/{0}/addUser", workspace);
             return new ItemRequest<Workspace>(this.Client, path, "POST");
         }    
 
@@ -108,7 +107,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Workspace> RemoveUser(string workspace) 
         {
-            string path = string.Format("/workspaces/%s/removeUser", workspace);
+            string path = string.Format("/workspaces/{0}/removeUser", workspace);
             return new ItemRequest<Workspace>(this.Client, path, "POST");
         }
     }

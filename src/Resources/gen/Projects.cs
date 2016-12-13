@@ -1,8 +1,7 @@
 using Asana.Models;
 using Asana.Requests;
-using Asana.Resources;
 
-namespace Asana.Requests 
+namespace Asana.Resources 
 {
     /// <summary>
     ///     A _project_ represents a prioritized list of tasks in Asana. It exists in a
@@ -51,7 +50,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Project> CreateInWorkspace(string workspace) 
         {
-            string path = string.Format("/workspaces/%s/projects", workspace);
+            string path = string.Format("/workspaces/{0}/projects", workspace);
             return new ItemRequest<Project>(this.Client, path, "POST");
         }    
 
@@ -66,7 +65,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Project> CreateInTeam(string team) 
         {
-            string path = string.Format("/teams/%s/projects", team);
+            string path = string.Format("/teams/{0}/projects", team);
             return new ItemRequest<Project>(this.Client, path, "POST");
         }    
 
@@ -79,7 +78,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Project> FindById(string project) 
         {
-            string path = string.Format("/projects/%s", project);
+            string path = string.Format("/projects/{0}", project);
             return new ItemRequest<Project>(this.Client, path, "GET");
         }    
 
@@ -100,7 +99,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Project> Update(string project) 
         {
-            string path = string.Format("/projects/%s", project);
+            string path = string.Format("/projects/{0}", project);
             return new ItemRequest<Project>(this.Client, path, "PUT");
         }    
 
@@ -116,7 +115,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Project> Delete(string project) 
         {
-            string path = string.Format("/projects/%s", project);
+            string path = string.Format("/projects/{0}", project);
             return new ItemRequest<Project>(this.Client, path, "DELETE");
         }    
 
@@ -139,7 +138,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public CollectionRequest<Project> FindByWorkspace(string workspace) 
         {
-            string path = string.Format("/workspaces/%s/projects", workspace);
+            string path = string.Format("/workspaces/{0}/projects", workspace);
             return new CollectionRequest<Project>(this.Client, path, "GET");
         }    
 
@@ -152,7 +151,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public CollectionRequest<Project> FindByTeam(string team) 
         {
-            string path = string.Format("/teams/%s/projects", team);
+            string path = string.Format("/teams/{0}/projects", team);
             return new CollectionRequest<Project>(this.Client, path, "GET");
         }    
 
@@ -165,7 +164,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public CollectionRequest<Project> Sections(string project) 
         {
-            string path = string.Format("/projects/%s/sections", project);
+            string path = string.Format("/projects/{0}/sections", project);
             return new CollectionRequest<Project>(this.Client, path, "GET");
         }    
 
@@ -179,7 +178,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public CollectionRequest<Project> Tasks(string project) 
         {
-            string path = string.Format("/projects/%s/tasks", project);
+            string path = string.Format("/projects/{0}/tasks", project);
             return new CollectionRequest<Project>(this.Client, path, "GET");
         }    
 
@@ -194,7 +193,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Project> AddFollowers(string project) 
         {
-            string path = string.Format("/projects/%s/addFollowers", project);
+            string path = string.Format("/projects/{0}/addFollowers", project);
             return new ItemRequest<Project>(this.Client, path, "POST");
         }    
 
@@ -208,7 +207,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Project> RemoveFollowers(string project) 
         {
-            string path = string.Format("/projects/%s/removeFollowers", project);
+            string path = string.Format("/projects/{0}/removeFollowers", project);
             return new ItemRequest<Project>(this.Client, path, "POST");
         }    
 
@@ -221,7 +220,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Project> AddMembers(string project) 
         {
-            string path = string.Format("/projects/%s/addMembers", project);
+            string path = string.Format("/projects/{0}/addMembers", project);
             return new ItemRequest<Project>(this.Client, path, "POST");
         }    
 
@@ -234,7 +233,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Project> RemoveMembers(string project) 
         {
-            string path = string.Format("/projects/%s/removeMembers", project);
+            string path = string.Format("/projects/{0}/removeMembers", project);
             return new ItemRequest<Project>(this.Client, path, "POST");
         }    
 
@@ -247,7 +246,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Project> AddCustomFieldSetting(string project) 
         {
-            string path = string.Format("/projects/%s/addCustomFieldSetting", project);
+            string path = string.Format("/projects/{0}/addCustomFieldSetting", project);
             return new ItemRequest<Project>(this.Client, path, "POST");
         }    
 
@@ -260,7 +259,7 @@ namespace Asana.Requests
         /// <returns> Request object </returns>        
         public ItemRequest<Project> RemoveCustomFieldSetting(string project) 
         {
-            string path = string.Format("/projects/%s/removeCustomFieldSetting", project);
+            string path = string.Format("/projects/{0}/removeCustomFieldSetting", project);
             return new ItemRequest<Project>(this.Client, path, "POST");
         }
     }
