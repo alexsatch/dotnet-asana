@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,14 +47,47 @@
     <Compile Include="Client.cs" />
     <Compile Include="HttpClientDispatcher.cs" />
     <Compile Include="IDispatcher.cs" />
+    <Compile Include="Models\Attachment.cs" />
+    <Compile Include="Models\CustomField.cs" />
+    <Compile Include="Models\CustomFieldEnumOptions.cs" />
+    <Compile Include="Models\CustomFieldSetting.cs" />
+    <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\Error.cs" />
+    <Compile Include="Models\ErrorBody.cs" />
+    <Compile Include="Models\Event.cs" />
+    <Compile Include="Models\NextPage.cs" />
+    <Compile Include="Models\Photo.cs" />
+    <Compile Include="Models\ResultBody.cs" />
+    <Compile Include="Models\ResultBodyCollection.cs" />
+    <Compile Include="Models\Story.cs" />
+    <Compile Include="Models\Tag.cs" />
+    <Compile Include="Models\Task.cs" />
+    <Compile Include="Models\Team.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Webhook.cs" />
+    <Compile Include="Models\Workspace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Requests\CollectionRequest.cs" />
+    <Compile Include="Requests\EventsRequest.cs" />
+    <Compile Include="Requests\ItemRequest.cs" />
     <Compile Include="Requests\Request.cs" />
     <Compile Include="Models\Project.cs" />
-    <Compile Include="Resources\Projects.cs" />
+    <Compile Include="Resources\gen\Attachments.cs" />
+    <Compile Include="Resources\gen\CustomFields.cs" />
+    <Compile Include="Resources\gen\CustomFieldSettings.cs" />
+    <Compile Include="Resources\gen\Events.cs" />
+    <Compile Include="Resources\gen\Projects.cs" />
+    <Compile Include="Resources\gen\Stories.cs" />
+    <Compile Include="Resources\gen\Tags.cs" />
+    <Compile Include="Resources\gen\Tasks.cs" />
+    <Compile Include="Resources\gen\Teams.cs" />
+    <Compile Include="Resources\gen\Users.cs" />
+    <Compile Include="Resources\gen\Webhooks.cs" />
+    <Compile Include="Resources\gen\Workspaces.cs" />
     <Compile Include="Resources\Resource.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\gen\" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

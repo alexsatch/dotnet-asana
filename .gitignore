@@ -1,6 +1,7 @@
 # Visual Studio
 /.vs/
 *.suo
+*.csproj.DotSettings
 *.user
 *.ide/
 [Oo]bj/
